@@ -3,7 +3,9 @@ import styled from 'styled-components';
 const Login = (props) => {
     return (
         <Container>
-            <Content>Content</Content>
+            <Content>
+                <BgImage />
+            </Content>
         </Container>
     );
 };
@@ -19,7 +21,7 @@ const Container = styled.section`
 const Content = styled.div`
     margin-bottom: 10vw;
     width: 100%;
-    possition: relative;
+    position: relative;
     min-height: 100vh;
     box-sizing: border-box;
     display: flex;
@@ -28,6 +30,18 @@ const Content = styled.div`
     flex-direction: column;
     padding: 80px 40px;
     height: 100%;
+`;
+
+const BgImage = styled.div`
+    height: 100%;
+    background-position: top;
+    background-size: cover;
+    background-image: url('/images/login-background.jpg');
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;
 `;
 
 export default Login;
