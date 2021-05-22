@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -13,6 +14,15 @@ const Header = () => {
     const history = useHistory();
     const username = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
+
+    useEffect(() => {
+        auth.onAuthStateChanged(async (user) => {
+            if(user) {
+                setUser(user);
+                history.push('/home');
+            }
+        });
+    }, [username]);
 
     const handleAuth = () => {
         auth
@@ -190,7 +200,7 @@ const Login = styled.a`
 
 const UserImg = styled.img`
     height: 100%;
-    
+
 `;
 
 export default Header;
