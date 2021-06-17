@@ -1,43 +1,24 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectRecommend, } from '../features/movie/movieSlice';
 
 const Recommends = () => {
+    const movies = useSelector(selectRecommend);
+
     return (
         <Container>
             <h4>Recommended for You</h4>
             <Content>
-                <Wrap>
-                    <Link to="/">
-                        <img
-                            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=1200&aspectRatio=1.78&format=jpeg"
-                            alt=""
-                        />
-                    </Link>
-                </Wrap>
-                <Wrap>
-                    <Link to="/">
-                        <img
-                            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=1200&aspectRatio=1.78&format=jpeg"
-                            alt=""
-                        />
-                    </Link>
-                </Wrap>
-                <Wrap>
-                    <Link to="/">
-                        <img
-                            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=1200&aspectRatio=1.78&format=jpeg"
-                            alt=""
-                        />
-                    </Link>
-                </Wrap>
-                <Wrap>
-                    <Link to="/">
-                        <img
-                            src="https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/87F1DCF36049558159913ADFD18A800DE1121771540033EC3A7651B8FE154CEB/scale?width=1200&aspectRatio=1.78&format=jpeg"
-                            alt=""
-                        />
-                    </Link>
-                </Wrap>
+                {movies &&
+                    movies.map((movie, key) => (
+                        <Wrap key={key}>
+                            {movie.id}
+                            <Link to={'/detail/' + movie.id}>
+                                <img src={movie.cardImg} alt={movie.title} />
+                            </Link>
+                        </Wrap>
+                    ))}
             </Content>
         </Container>
     );
@@ -62,7 +43,7 @@ const Wrap = styled.div`
     padding-top: 56.25%;
     border-radius: 10px;
     box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
-        rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+    rgb(0 0 0 / 73%) 0px 16px 10px -10px;
     cursor: pointer;
     overflow: hidden;
     position: relative;
