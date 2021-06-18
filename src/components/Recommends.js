@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectRecommend, } from '../features/movie/movieSlice';
+import { selectRecommend } from '../features/movie/movieSlice';
 
 const Recommends = () => {
     const movies = useSelector(selectRecommend);
