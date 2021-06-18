@@ -26,7 +26,18 @@ const Detail = (props) => {
                         <img src="/images/play-icon-white.png" alt="" />
                         <span>Trailer</span>
                     </Trailer>
+                    <AddList>
+                        <span />
+                        <span />
+                    </AddList>
+                    <GroupWatch>
+                        <div>
+                            <img src="/images/group-icon.png" alt="" />
+                        </div>
+                    </GroupWatch>
                 </Controls>
+                <SubTitle></SubTitle>
+                <Description></Description>
             </ContentMeta>
         </Container>
     );
@@ -132,6 +143,79 @@ const Trailer = styled(Player)`
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgb(249, 249, 249);
     color: rgb(249, 249, 249);
+`;
+
+const AddList = styled.div`
+    margin-right: 16px;
+    height: 44px;
+    width: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    border: 2px solid white;
+    cursor: pointer;
+    
+    span {
+        background-color: rgb(249, 249, 249);
+        display: inline-block;
+
+        &:first-child {
+            height: 2px;
+            transform: translate(1px, 0px) rotate(0deg);
+            width: 16px;
+        }
+            
+        &:nth-child(2) {
+            height: 16px;
+            transform: translateX(-8px) rotate(0deg);
+            width: 2px;
+        }
+    }
+`;
+
+const GroupWatch = styled.div`
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: white;
+
+    div {
+        height: 40px;
+        width: 40px;
+        background: rgb(0, 0, 0);
+        border-radius: 50%;
+
+        img {
+            width: 100%;
+        }
+  }
+`;
+
+const SubTitle = styled.div`
+    color: rgb(249, 249, 249);
+    font-size: 15px;
+    min-height: 20px;
+
+    @media (max-width: 768px) {
+        font-size: 12px;
+    }
+`;
+
+const Description = styled.div`
+    line-height: 1.4;
+    font-size: 20px;
+    padding: 16px 0px;
+    color: rgb(249, 249, 249);
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 `;
 
 export default Detail;
